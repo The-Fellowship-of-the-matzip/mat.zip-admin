@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "globals": {
+    "__API_URL__": true,
+    "__GITHUB_CLIENT_ID__": true
+  },
+  "rules": {
+    "react/prop-types": false,
+    "react-hooks/exhaustive-deps": false
+  }
+}
