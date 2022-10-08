@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { API_BASE_URL, ENDPOINTS } from "../../constants/urls";
 
@@ -40,7 +41,8 @@ const Button = styled.div`
   background-color: ${({ theme }) => theme.primary};
 `;
 
-function LoginContent() {
+function LoginContent({ setAccessToken }) {
+  const navigate = useNavigate();
   let id = "";
   let password = "";
 
@@ -51,7 +53,9 @@ function LoginContent() {
         password,
       });
       const accessToken = res.data.accessToken;
+      setAccessToken(accessToken);
       sessionStorage.setItem("accessToken", accessToken);
+      navigate("/");
     } catch (err) {
       alert(err.message);
     }

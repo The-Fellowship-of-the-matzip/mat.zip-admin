@@ -30,7 +30,7 @@ const TextBlock = styled.div`
   color: white;
 `;
 
-const LoginBox = () => {
+const LoginBox = ({ setAccessToken }) => {
   return (
     <>
       <Box>
@@ -38,7 +38,7 @@ const LoginBox = () => {
           <Logo />
           <TextBlock>ADMIN</TextBlock>
         </Header>
-        <LoginContent />
+        <LoginContent setAccessToken={setAccessToken} />
       </Box>
     </>
   );
