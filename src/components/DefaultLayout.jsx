@@ -30,6 +30,13 @@ const Body = styled.section`
   display: flex;
 `;
 
+const ContentsBox = styled.section`
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
 const DefaultLayout = ({ selectedPage }) => {
   return (
     <>
@@ -38,7 +45,9 @@ const DefaultLayout = ({ selectedPage }) => {
         <Contents>
           <Header>{selectedPage}</Header>
           <Body>
-            <Outlet />
+            <ContentsBox>
+              <Outlet />
+            </ContentsBox>
           </Body>
         </Contents>
       </LayOut>

@@ -55,7 +55,7 @@ function LoginContent({ setAccessToken }) {
       const accessToken = res.data.accessToken;
       setAccessToken(accessToken);
       sessionStorage.setItem("accessToken", accessToken);
-      navigate("/");
+      navigate("/members");
     } catch (err) {
       alert(err.message);
     }

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 
@@ -25,15 +26,32 @@ const BarItem = styled.div`
 `;
 
 const NavigationBar = () => {
+  const navigate = useNavigate();
+
+  const navigateMembersPage = () => {
+    navigate("/members");
+  };
+  const navigateRestaurantsPage = () => {
+    navigate("/restaurants");
+  };
+  const navigateReviewsPage = () => {
+    navigate("/reviews");
+  };
+  const navigateRestaurantsDemandsPage = () => {
+    navigate("/restaurant_demands");
+  };
+
   return (
     <Bar>
       <BarHeader>
         <Logo width={"80%"} />
       </BarHeader>
-      <BarItem>회원</BarItem>
-      <BarItem>음식점</BarItem>
-      <BarItem>리뷰</BarItem>
-      <BarItem>음식점 추가 요청</BarItem>
+      <BarItem onClick={navigateMembersPage}>회원</BarItem>
+      <BarItem onClick={navigateRestaurantsPage}>음식점</BarItem>
+      <BarItem onClick={navigateReviewsPage}>리뷰</BarItem>
+      <BarItem onClick={navigateRestaurantsDemandsPage}>
+        음식점 추가 요청
+      </BarItem>
     </Bar>
   );
 };
