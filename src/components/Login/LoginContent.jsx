@@ -1,4 +1,6 @@
+import axios from "axios";
 import styled from "styled-components";
+import { API_BASE_URL, ENDPOINTS } from "../../constants/urls";
 
 const Container = styled.div`
   padding: 2rem;
@@ -39,17 +41,52 @@ const Button = styled.div`
 `;
 
 function LoginContent() {
+  let id = "";
+  let password = "";
+
+  const login = async () => {
+    try {
+      const res = await axios.post(`${API_BASE_URL}${ENDPOINTS.LOGIN}`, {
+        id,
+        password,
+      });
+      const accessToken = res.data.accessToken;
+      sessionStorage.setItem("accessToken", accessToken);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const handleIdInputChange = (e) => {
+    id = e.target.value;
+  };
+
+  const handlePasswordInputChange = (e) => {
+    password = e.target.value;
+  };
+
   return (
     <Container>
       <TextBlock>Log In</TextBlock>
-      <Input id="id" name="id" placeholder="아이디를 입력해주세요" />
+      <Input
+        id="id"
+        name="id"
+        placeholder="아이디를 입력해주세요"
+        onChange={handleIdInputChange}
+      />
       <Input
         id="password"
         name="password"
         type="password"
         placeholder="비밀번호를 입력해주세요"
+        onChange={handlePasswordInputChange}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            login();
+          }
+        }}
       />
-      <Button>로그인</Button>
+      <Button onClick={login}>로그인</Button>
     </Container>
   );
 }
