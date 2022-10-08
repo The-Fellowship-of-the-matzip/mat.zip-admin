@@ -25,7 +25,9 @@ const Contents = styled.section`
 `;
 
 const Body = styled.section`
+  padding: 1rem;
   flex-grow: 1;
+  display: flex;
 `;
 
 const DefaultLayout = ({ selectedPage }) => {

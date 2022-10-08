@@ -12,7 +12,7 @@ const LayOut = styled.section`
 const LoginPage = ({ setAccessToken }) => {
   return (
     <LayOut>
-      <LoginBox setAccessToken={setAccessToken} />;
+      <LoginBox setAccessToken={setAccessToken} />
     </LayOut>
   );
 };
